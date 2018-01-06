@@ -1,4 +1,15 @@
 # Created by .ignore support plugin (hsz.mobi)
+##IntelliJ
+/*.iml
+.idea/
+/out/
+/build/
+
+## Gradle
 .gradle/
-.idea/workspace.xml
-src/
+
+## Package Files #
+*.jar
+!h2*.jar
+*.war
+*.ear
