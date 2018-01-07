@@ -3,7 +3,8 @@
 <head th:fragment="head(page_title)">
     <meta charset="UTF-8"/>
 
-
+    <link rel="stylesheet" th:href="@{/vendor/materialize_v1.0.0/css/materialize.css}"/>
+    <link rel="stylesheet" th:href="@{/app.css}"/>
     <!--TODO - KL: Insert all links to CSS files-->
 
 
@@ -17,6 +18,9 @@
 <!--TODO - KL: Insert fragment for FLASH message-->
 
 <!--TODO - KL: Insert fragment for all scripts-->
-
+<div th:fragment="scripts">
+    <script th:src="@{vendor/jquery/jquery-v3.2.1.js}"></script>
+    <script th:src="@{vendor/materialize_v1.0.0/js/materialize.js}"></script>
+</div>
 </body>
 </html>
