@@ -4,23 +4,72 @@
     <meta charset="UTF-8"/>
 
     <link rel="stylesheet" th:href="@{/vendor/materialize_v1.0.0/css/materialize.css}"/>
+    <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet"/>
     <link rel="stylesheet" th:href="@{/app.css}"/>
     <!--TODO - KL: Insert all links to CSS files-->
-
 
     <title th:text="'Core Analysis Toolbox | ' + ${page_title}">Title</title>
 </head>
 <body>
 
-<h1>Welcome!</h1>
 
+<div th:fragment="nav_bar">
+    <nav>
+        <div class="nav-wrapper  light-blue accent-1">
+            <div class="col s12 container">
+                <a href='/' class="brand-logo">Logo</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a class="dropdown-trigger" href='/' data-target='dropdown1'>Core <i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="/" data-target="dropdown2">Analysis <i
+                            class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a href="/">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--TODO - KL: Fix bug with highlighted navbar heading after hover-->
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/">Add</a></li>
+        <li><a href="/">Core Details</a></li>
+        <li><a href="/">Library</a></li>
+    </ul>
+    <ul id="dropdown2" class="dropdown-content">
+        <li><a href="/">Curve Fit</a></li>
+        <li><a href="/">Simulation</a></li>
+        <li><a href="/">History Match</a></li>
+        <li><a href="/">Analytical</a></li>
+    </ul>
+</div>
+
+<div th:class="container">
+    <ul th:class="collapsible">
+        <li>
+            <div th:class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+    </ul>
+</div>
+
+
+<!--TODO - KL: Insert fragment for FOOTER-->
 
 <!--TODO - KL: Insert fragment for FLASH message-->
 
 <!--TODO - KL: Insert fragment for all scripts-->
 <div th:fragment="scripts">
-    <script th:src="@{vendor/jquery/jquery-v3.2.1.js}"></script>
-    <script th:src="@{vendor/materialize_v1.0.0/js/materialize.js}"></script>
+    <script th:src="@{/vendor/jquery/jquery-v3.2.1.js}"></script>
+    <script th:src="@{/vendor/materialize_v1.0.0/js/materialize.js}"></script>
+    <script th:src="@{/app.js}"></script>
 </div>
 </body>
 </html>
