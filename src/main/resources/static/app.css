@@ -1,0 +1,13 @@
+
+
+/*Aligning settings icon to the right in a collapsible-header*/
+a.settings-align {
+    display:inline-block;
+    margin-left:auto;
+    margin-right:0cm;
+}
+
+/*Dropdown list from settings in collapsible*/
+.dropdown-content li > .attr {
+    font-size: 12px;
+}

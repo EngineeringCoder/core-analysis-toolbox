@@ -10,6 +10,12 @@ public class TestController {
     @RequestMapping(value = "/")
     public String showTestPage(Model model) {
 
-        return "layout";
+        return "home";
+    }
+
+    @RequestMapping(value = "/library")
+    public String showLibraryPage(Model model) {
+
+        return "/core/library";
     }
 }

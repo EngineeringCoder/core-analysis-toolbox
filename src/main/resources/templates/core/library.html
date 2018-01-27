@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="layout::head(Home)"></div>
+<body>
+
+<div th:replace="layout::nav_bar"></div>
+
+<main>
+
+
+    <div th:class="container">
+        <ul th:class="collapsible">
+            <li>
+                <div th:class="collapsible-header"><i class="material-icons">filter_drama</i>First
+                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a>
+                </div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">place</i>Second
+                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a></div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third
+                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a></div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Dropdown Structure for Settings -->
+    <ul id="settingsDropDown" class="dropdown-content ">
+        <li><a class="attr" href="/">Edit</a></li>
+        <li><a class="attr" href="/">Delete</a></li>
+    </ul>
+
+</main>
+
+
+<div th:replace="layout::footer"></div>
+<div th:replace="layout::scripts"></div>
+</body>
+</html>
