@@ -3,7 +3,6 @@
 <head th:fragment="head(page_title)">
     <meta charset="UTF-8"/>
 
-    <!--TODO - KL: Insert all links to CSS files-->
     <link rel="stylesheet" th:href="@{/vendor/materialize_v1.0.0/css/materialize.css}"/>
     <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}" rel="stylesheet"/>
     <link rel="stylesheet" th:href="@{/app.css}"/>
@@ -15,7 +14,7 @@
 
 <div th:fragment="nav_bar">
     <nav>
-        <div class="nav-wrapper  light-blue accent-1">
+        <div class="nav-wrapper  blue-grey darken-2">
             <div class="col s12 container">
                 <a th:href='@{/}' class="brand-logo">Logo</a>
                 <ul class="right hide-on-med-and-down">
@@ -23,16 +22,16 @@
                             class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="dropdown-trigger" href="/" data-target="dropdown2">Analysis <i
                             class="material-icons right">arrow_drop_down</i></a></li>
-                    <li><a href="/">About</a></li>
+                    <li><a class="dropdown-trigger" href="/" data-target="dropdown3">About<i
+                            class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!--TODO - KL: Fix bug with highlighted navbar heading after hover-->
-    <!-- Dropdown Structure -->
+    <!-- Dropdown Structure for Nav-Bar -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="/">Add</a></li>
-        <li><a href="/">Core Details</a></li>
+        <li><a th:href="@{/core-details}">Core Details</a></li>
         <li><a th:href="@{/library}">Library</a></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content">
@@ -41,34 +40,58 @@
         <li><a href="/">History Match</a></li>
         <li><a href="/">Analytical</a></li>
     </ul>
+    <ul id="dropdown3" class="dropdown-content">
+        <li><a href="/">Background</a></li>
+        <li><a href="/">Contact</a></li>
+        <li><a href="/">Credits</a></li>
+    </ul>
 </div>
 
 
-
-
 <!--TODO - KL: Insert fragment for FOOTER-->
-<footer th:fragment="footer" class="page-footer light-blue accent-1">
+<footer th:fragment="footer" class="page-footer blue-grey darken-2">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 class="white-text">Please Subscribe</h5>
+                <p class="grey-text text-lighten-4">By subscribing you will receive newsletters regarding updates and
+                    new features.</p>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" type="email" class="validate"/>
+                                <label for="email">Email</label>
+                                <span class="helper-text"
+                                      data-error="Oops! Looks like you entered an invalid email address."
+                                      data-success="Looks good!"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Contact Details</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    <!--TODO -KL: Position text to be center on icons-->
+                    <li class="grey-text text-lighten-3 valign-wrapper"><i class="material-icons">person</i>Kjetil Lorentzen</li>
+                    <li class="grey-text text-lighten-3 valign-wrapper"><i class="material-icons">email</i>kjeloren@gmail.com</li>
+                    <li class="grey-text text-lighten-3 valign-wrapper"><i class="material-icons">phone</i>(+47) 997 90 068</li>
+                    <li>
+                        <!--TODO -KL: Provide proper icons for social media-->
+                        <a href="#">
+                            <img th:src="@{images/twitter-icon.png}" width="24px" alt="twitter"/>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2018 Kjetil Lorentzen
+            <a class="grey-text text-lighten-4 right" href="#!">About</a>
         </div>
     </div>
 </footer>
@@ -80,7 +103,6 @@
     <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}" class="flash"></div>
 </div>-->
 
-<!--TODO - KL: Insert fragment for all scripts-->
 <div th:fragment="scripts">
     <script th:src="@{/vendor/jquery/jquery-v3.2.1.js}"></script>
     <script th:src="@{/vendor/materialize_v1.0.0/js/materialize.js}"></script>

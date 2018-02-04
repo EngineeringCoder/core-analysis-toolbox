@@ -1,5 +1,10 @@
 
 
+/*Heading */
+h1 {
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
 /*Aligning settings icon to the right in a collapsible-header*/
 a.settings-align {
     display:inline-block;
@@ -8,6 +13,38 @@ a.settings-align {
 }
 
 /*Dropdown list from settings in collapsible*/
-.dropdown-content li > .attr {
+/*.dropdown-content li > .settings-dropdown {
     font-size: 12px;
+}*/
+/*Overriding dropdown appearence*/
+.dropdown-content li > a {
+    font-size: 14px;
+}
+
+/*Overriding Tab styling*/
+.tabs .tab a:hover, .tabs .tab a.active {
+  color:#00695c;
+}
+.tabs .tab a {
+  color:#00695c;
+}
+.tabs .indicator {
+  color:#00695c;
+  background-color:#00695c;
+}
+
+/*Sticky footer*/
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+
+/*Positioning FAB in Core Details*/
+.fixed-action-btn {
+    position:relative;
 }

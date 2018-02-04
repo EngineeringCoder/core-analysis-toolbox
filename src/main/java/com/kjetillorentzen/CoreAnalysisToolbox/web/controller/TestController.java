@@ -1,5 +1,6 @@
 package com.kjetillorentzen.CoreAnalysisToolbox.web.controller;
 
+import com.kjetillorentzen.CoreAnalysisToolbox.model.Core;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +18,11 @@ public class TestController {
     public String showLibraryPage(Model model) {
 
         return "/core/library";
+    }
+
+    @RequestMapping(value = "/core-details")
+    public String showCoreDetails(Model model) {
+        model.addAttribute("core", new Core());
+        return "/core/details";
     }
 }
