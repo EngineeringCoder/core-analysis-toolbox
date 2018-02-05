@@ -5,6 +5,7 @@ $(document).ready(function(){
     $(".dropdown-trigger").dropdown({hover:true,coverTrigger:false});
     $(".tabs").tabs();
     $(".fixed-action-btn").floatingActionButton();
+    $("select").select();
   });
 
 

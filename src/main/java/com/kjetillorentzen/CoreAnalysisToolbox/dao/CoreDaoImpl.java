@@ -30,8 +30,14 @@ public class CoreDaoImpl implements CoreDao {
 
     @Override
     public Core findById(Long id) {
-        //TODO -KL: Implement findById Dao
-        return null;
+        // Open a session
+        Session session = sessionFactory.openSession();
+        //Get Core by ID
+        Core core = session.get(Core.class, id);
+        // Close session
+        session.close();
+
+        return core;
     }
 
     @Override

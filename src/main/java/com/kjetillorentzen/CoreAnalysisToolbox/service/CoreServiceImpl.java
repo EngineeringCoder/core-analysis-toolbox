@@ -19,7 +19,7 @@ public class CoreServiceImpl implements CoreService {
 
     @Override
     public Core findById(Long id) {
-        return null;
+        return coreDao.findById(id);
     }
 
     @Override

@@ -13,21 +13,13 @@
 
     <div th:class="container">
         <ul th:class="collapsible">
-            <li>
-                <div th:class="collapsible-header"><i class="material-icons">filter_drama</i>First
-                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a>
+            <li th:each="core : ${cores}">
+                <div th:text="${core.name}" th:class="collapsible-header"><i
+                        th:class="material-icons">filter_drama</i>First
+                    <a th:class="material-icons settings-align dropdown-trigger btn-flat"
+                       data-target="settingsDropDown">settings</a>
                 </div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">place</i>Second
-                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a></div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third
-                    <a class="material-icons settings-align dropdown-trigger btn-flat" data-target="settingsDropDown">settings</a></div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div th:class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
             </li>
         </ul>
     </div>
