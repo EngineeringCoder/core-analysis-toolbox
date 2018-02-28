@@ -31,7 +31,9 @@
     <!--TODO - KL: Fix bug with highlighted navbar heading after hover-->
     <!-- Dropdown Structure for Nav-Bar -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a th:href="@{/core-details}">Core Details</a></li>
+        <li><a th:href="@{/add-core}">Add Core</a></li>
+        <!--TODO - KL: Provide functionality such that the latest visited core is opened-->
+        <li><a th:href="@{/core-details/1}">Core Details</a></li>
         <li><a th:href="@{/library}">Library</a></li>
     </ul>
     <ul id="dropdown2" class="dropdown-content">
@@ -81,7 +83,7 @@
                     <li>
                         <!--TODO -KL: Provide proper icons for social media-->
                         <a href="#">
-                            <img th:src="@{images/twitter-icon.png}" width="24px" alt="twitter"/>
+                            <!--<img th:src="@{images/twitter-icon.png}" width="24px" alt="twitter"/>-->
                         </a>
                     </li>
                 </ul>

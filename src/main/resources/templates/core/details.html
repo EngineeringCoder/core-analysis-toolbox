@@ -9,16 +9,16 @@
 <main>
 
     <!--TODO - KL: Create Heading-->
-    <h1 th:class="container" th:text="${core.name}">Core Name</h1>
+    <h1 th:class="container" th:text="(${core.name} == null ) ? 'New Core' : ${core.name} ">Core Name</h1>
     <div class="container divider"></div>
 
 
-    <!--Form to select Core-->
-    <div class="row container">
-        <div class="  col s4 offset-s4">
+    <!--Select core to view details for-->
+    <div class="row container core-dropdown">
+        <div class="  col s6 offset-s3 m4 offset-m4">
             <!--Dropdown Trigger-->
-            <a class="dropdown-trigger waves-effect waves-light btn" data-target="core-list"><i
-                    class="material-icons right">cloud</i>Select Core</a>
+            <a class="dropdown-trigger waves-effect waves-light btn blue-grey darken-2" data-target="core-list"><i
+                    class="material-icons right">arrow_drop_down</i>Select Core</a>
             <!--Dropdown Content for "core-list"-->
             <ul id='core-list' class='dropdown-content'>
                 <li th:each="core : ${cores}"><a th:href="@{|/core-details/${core.id}|}" th:text="${core.name}">one</a>
@@ -30,10 +30,29 @@
 
     <!--Tab section-->
     <div class="row container">
-        <form th:action="@{|/core-details/${core.id}|}" method="post" class="col s12" th:object="${core}">
+        <!--TODO - KL: Fix bug - when saving a new core we are not redirected to the new core's page-->
+        <form th:action="(${core.id} == null ) ? @{/core-details/1} : @{|/core-details/${core.id}|}" method="post"
+              class="col s12" th:object="${core}">
             <input type="hidden" th:field="*{id}"/>
+            <!--FAB-->
+            <div class="row ">
+                <div class="fixed-action-btn right">
+                    <a class="btn-floating btn-large blue-grey darken-2">
+                        <i class="large material-icons">mode_edit</i>
+                    </a>
+                    <ul>
+                        <!--TODO - KL: Link up anchor tags with actions-->
+                        <li><a th:href="@{/add-core}" class="btn-floating green"><i class="material-icons">add</i></a>
+                        </li>
+                        <li>
+                            <button type="submit" class="btn-floating blue"><i class="material-icons">save</i></button>
+                        </li>
+                        <li><a th:href="@{|/core-details/${core.id}/delete|}" class="btn-floating red"><i class="material-icons">delete</i></a></li>
+                    </ul>
+                </div>
+            </div>
             <div>
-                <div class="col s12 ">
+                <div class="col s12 tab-header">
                     <ul class="tabs  ">
                         <li class="tab col s3 "><a href="#core-prop-tab">Core Properties</a></li>
                         <li class="tab col s3 "><a href="#fluid-tab">Fluid Data</a></li>
@@ -45,43 +64,59 @@
                 <!--Tab # 1-->
                 <div id="core-prop-tab" class="col s12">
                     <div class="row">
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="core_name" th:field="*{name}" type="text" class="validate"/>
-                                <label for="core_name">Core Name</label>
+                        <h6 class="tab-section-content-header">Meta Data</h6>
+                        <div class="tab-section-content">
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="core_name" th:field="*{name}" type="text" class="validate"/>
+                                    <label for="core_name">Core Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="field_name" th:field="*{field}" type="text" class="validate"/>
+                                    <label for="field_name">Field Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="well_name" th:field="*{well}" type="text" class="validate"/>
+                                    <label for="well_name">Well Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="formation_name" th:field="*{formation}" type="text" class="validate"/>
+                                    <label for="formation_name">Formation Name</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="depthMD" th:field="*{depthMD}" type="number" class="validate"/>
+                                    <label for="depthMD">Depth [MD]</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="field_name" th:field="*{field}" type="text" class="validate"/>
-                                <label for="field_name">Field Name</label>
+                    </div>
+                    <div class="row">
+                        <h6 class="tab-section-content-header">Dimensions</h6>
+                        <div class="tab-section-content">
+                            <div class="row">
+                                <div class="input-field col s4">
+                                    <input id="length" th:field="*{length}" type="number" step="0.01" class="validate"/>
+                                    <label for="length">Core Length</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="diameter" th:field="*{diameter}" type="number" step="0.01"
+                                           class="validate"/>
+                                    <label for="diameter">Core Diameter</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="porosity" th:field="*{porosity}" type="number" step="0.000001"
-                                       class="validate"/>
-                                <label for="porosity">Porosity</label>
-                            </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s4">
+                            <input id="porosity" th:field="*{porosity}" type="number" step="0.000001"
+                                   class="validate"/>
+                            <label for="porosity">Porosity</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="length" th:field="*{length}" type="number" step="0.01" class="validate"/>
-                                <label for="length">Core Length</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="diameter" th:field="*{diameter}" type="number" step="0.01" class="validate"/>
-                                <label for="diameter">Core Diameter</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="poreVolume" th:field="*{poreVolume}" type="number" step="0.001"
-                                       class="validate"/>
-                                <label for="poreVolume">Core Pore Volume</label>
-                            </div>
+                        <div class="input-field col s4">
+                            <input id="poreVolume" th:field="*{poreVolume}" type="number" step="0.001"
+                                   class="validate"/>
+                            <label for="poreVolume">Core Pore Volume</label>
                         </div>
                     </div>
                 </div>
@@ -96,22 +131,6 @@
                 <!--Tab # 4-->
                 <div id="interpretation-tab" class="col s12">
                     Test 4
-                </div>
-            </div>
-            <!--FAB-->
-            <div class="row ">
-                <div class="fixed-action-btn right">
-                    <a class="btn-floating btn-large blue-grey darken-2">
-                        <i class="large material-icons">mode_edit</i>
-                    </a>
-                    <ul>
-                        <!--TODO - KL: Link up anchor tags with actions-->
-                        <li><a class="btn-floating green"><i class="material-icons">add</i></a></li>
-                        <li>
-                            <button type="submit" class="btn-floating blue"><i class="material-icons">save</i></button>
-                        </li>
-                        <li><a class="btn-floating red"><i class="material-icons">delete</i></a></li>
-                    </ul>
                 </div>
             </div>
         </form>

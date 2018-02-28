@@ -34,11 +34,21 @@ public class CoreController {
         return "/core/library";
     }
 
+    @RequestMapping(value = "/add-core")
+    public String addCore(Model model) {
+
+        List<Core> cores = coreService.findAll();
+        model.addAttribute("core", new Core());
+        model.addAttribute("cores", cores);
+        return "/core/details";
+    }
+
     @RequestMapping(value = "/core-details/{coreId}")
     public String showCoreDetails(@PathVariable Long coreId, Model model) {
 
         //List of all cores in DB
         List<Core> cores = coreService.findAll();
+        /*TODO - KL: Improve this conditional statement*/
         if (coreId == null) {
             coreId = 1L;
         }
@@ -54,5 +64,13 @@ public class CoreController {
 
         coreService.save(core);
         return String.format("redirect:/core-details/%s", coreId);
+    }
+
+    @RequestMapping(value = "/core-details/{coreId}/delete")
+    public String deleteCore( @PathVariable Long coreId) {
+
+        Core core = coreService.findById(coreId);
+        coreService.delete(core);
+        return String.format("redirect:/");
     }
 }

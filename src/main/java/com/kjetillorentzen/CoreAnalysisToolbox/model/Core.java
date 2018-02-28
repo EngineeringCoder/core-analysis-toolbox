@@ -3,7 +3,7 @@ package com.kjetillorentzen.CoreAnalysisToolbox.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.*;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,6 +16,12 @@ public class Core {
     @NotNull
     private String name;
     private String field;
+    private String well;
+    private String formation;
+
+
+    private double depthMD;
+
 
     //Core Properties
     private double porosity;
@@ -23,11 +29,12 @@ public class Core {
     private double diameter;
     private double poreVolume;
 
-    public Long getId() {
-        return id;
-    }
 
     public Core() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -48,6 +55,30 @@ public class Core {
 
     public void setField(String field) {
         this.field = field;
+    }
+
+    public String getWell() {
+        return well;
+    }
+
+    public void setWell(String well) {
+        this.well = well;
+    }
+
+    public String getFormation() {
+        return formation;
+    }
+
+    public void setFormation(String formation) {
+        this.formation = formation;
+    }
+
+    public double getDepthMD() {
+        return depthMD;
+    }
+
+    public void setDepthMD(double depthMD) {
+        this.depthMD = depthMD;
     }
 
     public double getPorosity() {

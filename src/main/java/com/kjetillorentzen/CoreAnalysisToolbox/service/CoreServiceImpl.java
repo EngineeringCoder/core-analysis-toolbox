@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class CoreServiceImpl implements CoreService {
     @Autowired
@@ -29,6 +30,6 @@ public class CoreServiceImpl implements CoreService {
 
     @Override
     public void delete(Core core) {
-
+        coreDao.delete(core);
     }
 }

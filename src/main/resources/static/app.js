@@ -4,8 +4,7 @@ $(document).ready(function(){
     $('.collapsible').collapsible();
     $(".dropdown-trigger").dropdown({hover:true,coverTrigger:false});
     $(".tabs").tabs();
-    $(".fixed-action-btn").floatingActionButton();
-    $("select").select();
+    $(".fixed-action-btn").floatingActionButton({direction:'left'});
   });
 
 

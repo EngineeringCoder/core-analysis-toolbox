@@ -1,9 +1,13 @@
 
 
-/*Heading */
+/*Headings */
 h1 {
     padding-top: 25px;
     padding-bottom: 10px;
+}
+
+h6 {
+  margin-left: 5px;
 }
 /*Aligning settings icon to the right in a collapsible-header*/
 a.settings-align {
@@ -21,6 +25,12 @@ a.settings-align {
     font-size: 14px;
 }
 
+/*Dropdown for selecting Cores in /core-details*/
+.core-dropdown {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
 /*Overriding Tab styling*/
 .tabs .tab a:hover, .tabs .tab a.active {
   color:#00695c;
@@ -31,6 +41,19 @@ a.settings-align {
 .tabs .indicator {
   color:#00695c;
   background-color:#00695c;
+}
+/*Setting Tab section styling*/
+#core-prop-tab{
+  padding-top: 15px;
+}
+.tab-section-content {
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.tab-section-content-header {
+  margin-bottom: 0.1rem;
 }
 
 /*Sticky footer*/
@@ -47,4 +70,6 @@ body {
 /*Positioning FAB in Core Details*/
 .fixed-action-btn {
     position:relative;
+    /*right: 5%;
+    bottom: 5%;*/
 }
