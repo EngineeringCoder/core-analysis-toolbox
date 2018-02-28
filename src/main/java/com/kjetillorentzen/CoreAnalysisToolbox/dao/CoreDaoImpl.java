@@ -24,6 +24,7 @@ public class CoreDaoImpl implements CoreDao {
         List<Core> cores = session.createCriteria(Core.class).list();
 
         //Close session
+        session.close();
 
         return cores;
     }
@@ -60,6 +61,20 @@ public class CoreDaoImpl implements CoreDao {
 
     @Override
     public void delete(Core core) {
-//TODO -KL: Implement Delete DAO
+
+        //Open a Session
+        Session session = sessionFactory.openSession();
+
+        //Begin Transaction
+        session.beginTransaction();
+
+        //Delete the core
+        session.delete(core);
+
+        //Commit Transaction
+        session.getTransaction().commit();
+
+        //Close the session
+        session.close();
     }
 }
